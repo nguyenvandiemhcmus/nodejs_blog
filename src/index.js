@@ -9,7 +9,7 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Http logger
-app.use(morgan('combined'));
+//app.use(morgan('combined'));
 
 //template engines
 app.engine('hbs', handlebars.engine({
@@ -26,8 +26,15 @@ app.get('/', (req, res) => {
 })
 
 app.get('/news', (req, res) => {
+    console.log(req.query.q);
     res.render('news');
 })
+
+app.get('/search', (req, res) => {
+    //console.log(req.query.q);
+    res.render('search');
+})
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
